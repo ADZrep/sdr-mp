@@ -150,9 +150,3 @@ for phi_idx = 1:length(phis)
 
 
 end;
-
-
-
-
-
-

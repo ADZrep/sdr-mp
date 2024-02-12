@@ -18,9 +18,9 @@
 clear all
 close all
 
-dynare thesis_risky noclearall nolog
+dynare sdr_risky noclearall nolog
 
-dynare thesis_riskfree noclearall nolog
+dynare sdr_riskfree noclearall nolog
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,7 +32,7 @@ dynare thesis_riskfree noclearall nolog
 
 % Setting the path to save the graphs
 
-folder = '/Users/alberto/Desktop/BOCCONI/BIEF/THESIS/TeX/Figures';
+folder = '/Users/alberto/Desktop/WORK/SDR_MP/TeX/Figures';
 
 % Risky Rate Targeting, Default risk shock
 figure;
@@ -365,6 +365,138 @@ legend('\phi = 0, R_t', '\phi = 0.1, R_t', ...
     '\phi = 0, R_t^f', '\phi = 0.1, R_t^f')
 
 saveas(gcf, fullfile(folder, 'IRF_PI_MON_CROSS.png'))
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% APPENDIX: ALTERNATIVE PARAMETRIZATION %%%%%%%%%%%%%%%%%%
+
+%%%%%%
+% Running the models
+%%%%%%
+
+clear all
+close all
+
+dynare sdr_risky_app noclearall nolog
+
+dynare sdr_riskfree_app noclearall nolog
+
+%%%%%%
+% Subplots showing the IRFs for the two models separately
+%%%%%%
+
+% Setting the path to save the graphs
+
+folder = '/Users/alberto/Desktop/WORK/SDR_MP/TeX/Figures';
+
+% Risky Rate Targeting, Monetary shock
+figure; 
+
+subplot(3,2,1)
+plot(r_irfrr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(r_irfrr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{r_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,2)
+plot(rf_irfrr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(rf_irfrr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{r_t}^f$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,3)
+plot(pi_irfrr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(pi_irfrr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{\pi_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,4)
+plot(t_irfrr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(t_irfrr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{t_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,5)
+plot(def_irfrr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(def_irfrr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{\delta_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,6)
+plot(b_irfrr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(b_irfrr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{b_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+saveas(gcf, fullfile(folder, 'IRF_MON_RISKY_APP.png'))
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Risk-free Rate Targeting, Monetary shock
+figure; 
+
+subplot(3,2,1)
+plot(r_irffr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(r_irffr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{r_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,2)
+plot(rf_irffr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(rf_irffr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{r_t}^f$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,3)
+plot(pi_irffr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(pi_irffr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{\pi_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,4)
+plot(t_irffr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(t_irffr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{t_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,5)
+plot(def_irffr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(def_irffr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{\delta_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+subplot(3,2,6)
+plot(b_irffr(:,1),'-b','Linewidth',1.5) % Phi = 0
+hold on
+plot(b_irffr(:,2),'-r','Linewidth',1.5) % Phi = 0.1
+hold off
+title('$\hat{b_t}$', 'Interpreter', 'latex', 'FontSize',13)
+legend('\phi = 0', '\phi = 0.1')
+
+saveas(gcf, fullfile(folder, 'IRF_MON_RFREE_APP.png'))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

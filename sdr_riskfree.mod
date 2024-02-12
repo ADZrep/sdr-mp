@@ -56,10 +56,17 @@ rhodef = 0.5;
 rhor = 0.5;
 
 
+%%%%
 % Values of phi to iterate over
+%%%%
+
 phis = [0, 0.1];
 
-% Loop over phi values
+
+%%%%
+% Loop the model over phi values
+%%%%
+
 for phi_idx = 1:length(phis)
     phi = phis(phi_idx);
 
