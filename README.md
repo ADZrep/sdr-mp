@@ -1,6 +1,6 @@
 # Sovereign Default Risk and Monetary Policy
 
-**Author:** Alberto Dario   
+**Author:** Alberto Dario Zanettin  
 **Date:** September 2023 
 
 ## Abstract
